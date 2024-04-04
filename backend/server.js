@@ -199,11 +199,13 @@ const votersContract = new web3.eth.Contract(VotersContract.abi, '0xC6fa08CF73ba
 
 app.use(express.json());
 
+
+
 app.post('/candidates', async (req, res) => {
   try {
     const { name, party, age, qualification } = req.body;
-    const receipt = await contractCandidate.methods.addCandidate(name, party, age, qualification)
-      .send({ from: '0x73cf342246c6686FE9026Ac62022aefc899671d9' });
+    const receipt = await candidatesContract.methods.addCandidate(name, party, age, qualification)
+      .send({ from: '0xc1fD82123DFB59D76fdE1F8f5FbC6250786BDa4D' });
 
     console.log('Transaction receipt:', receipt);
     res.status(200).send('Candidate added successfully');

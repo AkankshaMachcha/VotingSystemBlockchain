@@ -71,7 +71,7 @@ const CandidateListScreen = () => {
 
   const fetchCandidates = async () => {
     try {
-      const response = await axios.get('http://10.0.2.2:3000/api/candidates'); // Updated URL
+      const response = await axios.get('http://localhost:3000/candidates'); // Updated URL
       setCandidates(response.data);
     } catch (error) {
       console.error('Error fetching candidates:', error);

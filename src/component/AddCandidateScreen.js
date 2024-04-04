@@ -202,19 +202,31 @@ const AddCandidateScreen = () => {
 
   const handleAddCandidate = async () => {
     try {
-      const response = await axios.post('http://10.0.2.2:3000/candidates', {
-        name,
-        party,
-        age: parseInt(age),
-        qualification,
+      const response = await fetch('http://10.0.2.2:3000/candidates', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name,
+          party,
+          age: parseInt(age),
+          qualification,
+        }),
       });
-      console.log('Candidate added successfully:', response.data);
+      
+      if (!response.ok) {
+        throw new Error('Failed to add candidate');
+      }
+  
+      console.log('Candidate added successfully');
       // Optionally, you can navigate to another screen or show a success message
     } catch (error) {
-      console.error('Error adding candidate:', error);
+      console.error('Error adding candidate:', error.message);
       // Handle error, e.g., show an error message to the user
     }
   };
+  
 
   return (
     <View style={styles.container}>

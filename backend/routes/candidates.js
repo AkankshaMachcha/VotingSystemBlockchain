@@ -33,7 +33,7 @@ const {Web3} = require('web3');
 
 // Set up web3
 const web3 = new Web3('http://127.0.0.1:7545');
-const candidatesContract = new web3.eth.Contract(Candidates.abi, '0x413Abe3DdBfe3281f4d5a042CfeCdC18Df8cC70C');
+const candidatesContract = new web3.eth.Contract(Candidates.abi, '0xE0f9b4E13Acc68241780308E70b6481c23Ee6Fed');
 
 // Route to add a candidate
 router.post('/candidates', async (req, res) => {
